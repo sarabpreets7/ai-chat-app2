@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import ChatInterface from './components/ChatInterface';
+import FeedbackOverview from './components/FeedbackOverview';
+import ConversationView from './components/ConversationView';
+import ShareButton from './components/ShareButton';
+import styles from './styles';
 
 function App() {
+  const [conversationId, setConversationId] = useState(null);
+
+  const handleConversationSaved = (id) => {
+    setConversationId(id);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <div style={styles.appContainer}>
+            <div style={styles.mainContent}>
+              <div>
+                <ChatInterface style={styles.chatInterface} onSave={handleConversationSaved} />
+                <ShareButton style={styles.shareButton} conversationId={conversationId} />
+              </div>
+              <FeedbackOverview style={styles.feedbackOverview} />
+            </div>
+          </div>
+        } />
+        <Route path="/conversation/:id" element={<ConversationView />} />
+      </Routes>
+    </Router>
   );
 }
 
