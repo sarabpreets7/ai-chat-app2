@@ -2,7 +2,7 @@
   "name": "ai-chat-app2",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sarabpreets7.github.io/ai-chat-app2",
+  "homepage": "https://ai-chat-app-2.netlify.app",
   "dependencies": {
     "@chakra-ui/react": "^3.14.2",
     "@emotion/react": "^11.14.0",
