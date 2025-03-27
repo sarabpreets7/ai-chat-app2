@@ -1,4 +1,4 @@
-import { OpenAI } from 'openai';
+
 // Move sensitive logic to a secure serverless function
 export const getAIResponse = async (message) => {
   try {
